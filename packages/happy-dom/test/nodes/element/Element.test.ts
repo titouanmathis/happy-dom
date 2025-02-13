@@ -1777,9 +1777,17 @@ describe('Element', () => {
 	describe('getAttributeNames()', () => {
 		it('Returns attribute names.', () => {
 			element.setAttributeNS(NAMESPACE_URI, 'global:local1', 'value1');
+			element.setAttribute('ns1:key', 'value1');
+			element.setAttribute('ns2:key', 'value1');
 			element.setAttribute('key1', 'value1');
 			element.setAttribute('key2', '');
-			expect(element.getAttributeNames()).toEqual(['global:local1', 'key1', 'key2']);
+			expect(element.getAttributeNames()).toEqual([
+				'global:local1',
+				'ns1:key',
+				'ns2:key',
+				'key1',
+				'key2'
+			]);
 		});
 	});
 
